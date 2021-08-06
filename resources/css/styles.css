@@ -1,12 +1,32 @@
-* {
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
 }
 
 body {
   position: relative;
   background-color: #eeeeee;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+html {
+  font-size: 100%;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 h1,
@@ -15,10 +35,6 @@ h3 {
   font-family: "Bebas Neue", cursive;
   font-weight: 600;
   color: #242424;
-}
-
-p {
-  font-family: "Roboto Condensed", sans-serif;
 }
 
 h1 {
@@ -32,11 +48,10 @@ h2 {
   margin-bottom: 0;
 }
 
-nav a {
-  font-size: 1.2em;
-}
-
-nav {
+@media only screen and (max-width: 480px) {
+  h2 {
+    font-size: 4.5em;
+  }
 }
 
 p {
@@ -45,6 +60,12 @@ p {
 
 a {
   text-decoration: none;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 .sticky {
   position: fixed;
@@ -74,9 +95,6 @@ a {
 }
 
 .vertical {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   height: 100%;
 }
 
@@ -129,6 +147,12 @@ nav.navbar-custom {
   flex: 1 0 33%;
 }
 
+@media only screen and (max-width: 768px) {
+  .marca {
+    flex: 1 0 50%;
+  }
+}
+
 .marca img {
   width: 150px;
 }
@@ -144,17 +168,50 @@ nav.navbar-custom {
   text-decoration: none;
 }
 
+@media only screen and (max-width: 980px) {
+  .marca {
+    flex: 1 0 50%;
+  }
+
+  .marca img {
+    width: 90px;
+  }
+
+  h1 {
+    font-size: 100px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  h1 {
+    font-size: 60px;
+  }
+
+  .section {
+    display: inline-block;
+  }
+  .marca {
+    flex: 1 0 100%;
+    display: inline-block;
+  }
+
+  .marca img {
+    width: 60px;
+  }
+
+  #fp-nav.fp-right {
+    display: none;
+  }
+}
+
 /* SECCION 2 (TENDENCIA) */
 
 .tendencias-ropa {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-}
-
-.tendencias-prenda {
-  flex: 1 0 33%;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .prenda {
@@ -163,7 +220,7 @@ nav.navbar-custom {
   height: 350px;
   margin: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   border-radius: 10px;
@@ -171,6 +228,9 @@ nav.navbar-custom {
   text-align: center;
 }
 
+.tendencias-prenda {
+  flex: 0 0 33%;
+}
 .prenda img {
   width: 200px;
 }
@@ -182,6 +242,25 @@ nav.navbar-custom {
 
 .tendencia-img {
   margin-top: auto;
+}
+
+.prenda h3 {
+  font-size: 30px;
+}
+
+.prenda {
+  flex: 50%;
+}
+
+@media only screen and (max-width: 720px) {
+  .prenda {
+    width: 270px;
+    height: 290px;
+  }
+
+  .prenda h3 {
+    font-size: 20px;
+  }
 }
 
 /* SECCION 3 (HYPED) */
@@ -213,6 +292,49 @@ nav.navbar-custom {
   text-align: center;
 }
 
+@media only screen and (max-width: 1024px) {
+  .hype-item img {
+    width: 700px;
+  }
+
+  .slide h3 {
+    font-size: 2em;
+    padding: 0 10px;
+  }
+
+  .s3 h2 {
+    margin-bottom: -70px;
+  }
+
+  .s3 img {
+    margin-bottom: -20px;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .hype-item img {
+    width: 390px;
+  }
+
+  .slide h3 {
+    font-size: 1.5em;
+    padding: 0 10px;
+  }
+
+  .s3 h2 {
+    margin-bottom: -70px;
+  }
+
+  .s3 img {
+    margin-bottom: -20px;
+  }
+}
+
+@media only screen and (max-width: 610px) {
+  .hype-item img {
+    width: 300px;
+  }
+}
 /* SECCION 4 (TIPS) */
 
 .s4 h3 {
@@ -225,6 +347,10 @@ nav.navbar-custom {
 
 .tips h3 {
   font-size: 1.9em;
+}
+
+.s4 {
+  padding: 0 20px;
 }
 
 /* SECCION 5 (CONTACTO) */
@@ -333,6 +459,8 @@ input[type="submit"] {
   background-color: #242424;
   text-transform: uppercase;
   letter-spacing: 1.2px;
+
+  margin-top: 30px;
 }
 
 .btn-enviar {
@@ -344,9 +472,15 @@ input[type="submit"]:hover {
   background-color: #000;
 }
 
-form {
-}
+@media only screen and (max-width: 480px) {
+  .grupo {
+    flex-direction: column;
+  }
 
+  .s5 h2 {
+    margin-top: 30px;
+  }
+}
 /* FOOTER */
 footer {
   margin-top: 90px;
